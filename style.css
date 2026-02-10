@@ -1,28 +1,37 @@
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #fff0f5;
-    color: #333;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(#ffe6eb, #fff);
     text-align: center;
 }
 
-.hero {
+.page {
+    display: none;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
+    padding: 30px;
     justify-content: center;
-    background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+    align-items: center;
+    flex-direction: column;
 }
 
-.hero h1 {
-    font-size: 3em;
+.page.active {
+    display: flex;
+}
+
+h1, h2 {
+    color: #ff2f68;
+}
+
+.romantic {
+    font-size: 20px;
+    max-width: 600px;
 }
 
 button {
-    padding: 12px 25px;
+    padding: 14px 28px;
     margin: 10px;
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     background: #ff4d6d;
     color: white;
     font-size: 16px;
@@ -33,27 +42,8 @@ button:hover {
     background: #e63950;
 }
 
-.section {
-    padding: 60px 20px;
-}
-
-.gallery {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.gallery img {
-    width: 220px;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-.question {
-    margin: 30px 0;
-}
-
-.final {
-    background: #ffe5ec;
+.msg {
+    margin-top: 15px;
+    color: #ff2f68;
+    font-size: 16px;
 }
