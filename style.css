@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: "Segoe UI", sans-serif;
@@ -5,10 +9,11 @@ body {
     text-align: center;
 }
 
+/* PAGE */
 .page {
     display: none;
-    height: 100vh;
-    padding: 30px;
+    min-height: 100vh;
+    padding: 20px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -18,18 +23,42 @@ body {
     display: flex;
 }
 
-h1, h2 {
+/* CARD */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 360px;   /* perfect for mobile */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* TEXT */
+h1 {
+    font-size: 24px;
     color: #ff2f68;
 }
 
-.romantic {
-    font-size: 20px;
-    max-width: 600px;
+h2 {
+    font-size: 22px;
+    color: #ff2f68;
 }
 
+p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.romantic {
+    font-size: 17px;
+    margin: 15px 0;
+}
+
+/* BUTTONS */
 button {
-    padding: 14px 28px;
-    margin: 10px;
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
     border: none;
     border-radius: 30px;
     background: #ff4d6d;
@@ -42,8 +71,52 @@ button:hover {
     background: #e63950;
 }
 
+/* MESSAGE */
 .msg {
-    margin-top: 15px;
+    margin-top: 10px;
     color: #ff2f68;
+    font-size: 15px;
+}
+
+/* 🌸 DESKTOP ENHANCEMENT */
+@media (min-width: 768px) {
+    h1 {
+        font-size: 32px;
+    }
+
+    .card {
+        max-width: 500px;
+        padding: 30px;
+    }
+
+    button {
+        width: auto;
+        min-width: 180px;
+        margin: 10px;
+    }
+}
+.password-box {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.password-box .question {
     font-size: 16px;
+    margin-bottom: 10px;
+    color: #ff2f68;
+}
+
+.password-box input {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    border-radius: 30px;
+    border: 2px solid #ffb3c1;
+    text-align: center;
+    outline: none;
+    margin-bottom: 12px;
+}
+
+.password-box input:focus {
+    border-color: #ff4d6d;
 }
