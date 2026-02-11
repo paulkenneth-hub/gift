@@ -13,11 +13,7 @@
 <!-- Falling hearts container -->
     <div id="hearts-container"></div>
 
-        <img 
-        src="firstpagegif.gif" 
-        alt="Love Gif" 
-        class="top-gif"
-    >
+        <img src="pix/firstpagegif.gif" alt="Love Gif" class="top-gif"  id="mainGif">
         <h1>Paul Kenneth ❤️ Durga</h1>
 
         <p class="romantic">
@@ -46,14 +42,111 @@
 
 <!-- PAGE 2 -->
 <div class="page">
-    <h2>Little Quiz 💕</h2>
-    <p>Who loves the other more?</p>
+    <div class="card timeline-card">
 
-    <button onclick="wrong(this)">Me 😄</button>
-    <button onclick="correct()">You ❤️</button>
+        <h1>Our Love Story 💕</h1>
+        <div id="emoji-feedback"></div>
+        <div class="timeline">
 
-    <p class="msg"></p>
+            <div class="timeline-item">
+                <span class="dot">❤️</span>
+
+                <div class="content">
+                    <!-- QUIZ -->
+                    <div class="quiz" id="quiz-message">
+                        <h3>Who messaged first? 💬</h3>
+                        <button onclick="checkMessage('durga')">Durga 😊</button>
+                        <button onclick="checkMessage('paul')">Paul ❤️</button>
+                        <p class="quiz-msg"></p>
+                    </div>
+
+                    <!-- HIDDEN CONTENT -->
+                    <div class="hidden-content" id="messageContent">
+                        <h3>First Message 💬</h3>
+                        <img src="pix/secoundpage1.gif" alt="Love Gif" class="top-gif" id="gif21">
+                        <p>The day our story began with a simple “Hi”.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="timeline-item">
+                <span class="dot">💍</span>
+
+                <div class="content">
+                    <div class="quiz" id="quiz-propose">
+                        <h3>Who proposed first? 💖</h3>
+                        <button onclick="checkProposal('you')">Paul</button>
+                        <button onclick="checkProposal('me')">Durga</button>
+                        <p class="quiz-msg"></p>
+                    </div>
+
+                    <div class="hidden-content d-none" id="proposalContent">
+                        <h3>The Month We Proposed</h3>
+                        <img src="pix/secound2.gif" alt="Love Gif" class="top-gif" id="gif21">
+                        <p>September — that magical moment when love became forever 💍</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="timeline-item">
+                <span class="dot">🥰</span>
+
+                <div class="content">
+                    <div class="quiz" id="quiz-meet">
+                        <h3>When was our first meet? 📅</h3>
+                        <button onclick="checkMeetDate('12-12-2022')">12.12.2022 ❤️</button>
+                        <button onclick="checkMeetDate('11-12-2022')">11.12.2022 ❤️</button>
+                        <p class="quiz-msg"></p>
+                    </div>
+
+                    <div class="hidden-content" id="meetContent">
+                        <h3>First Meet 🥰</h3>
+                        <img src="pix/secound3.gif" alt="First Meet Gif" class="top-gif" id="gif21">
+                        <p>The butterflies, the smiles, the first time I saw you.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="timeline-item">
+                <span class="dot">✈️</span>
+
+                <div class="content">
+                    <!-- QUIZ -->
+                    <div class="quiz" id="quiz-trip">
+                        <h3>Where was our first trip together? 🌍</h3>
+                        <button onclick="checkTrip('pondy')">Pondy 🌊</button>
+                        <button onclick="checkTrip('kodaikanal')">Kodaikanal ⛰️❤️</button>
+                        <p class="quiz-msg"></p>
+                    </div>
+
+                    <!-- HIDDEN CONTENT -->
+                    <div class="hidden-content" id="tripContent">
+                        <h3>First Trip Together ✈️</h3>
+                        <img src="pix/secound4.gif" alt="First Trip Gif" class="top-gif">
+                        <p>Memories made, laughter shared, love grew stronger.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="timeline-item">
+                <span class="dot">💖</span>
+                <div class="content">
+                    <h3>Forever With You</h3>
+                    <p>Every tomorrow is my favorite with you.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <button onclick="nextPage()">Next 💕</button>
+
+    </div>
 </div>
+
 
 <!-- PAGE 3 -->
 <div class="page">

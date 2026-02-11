@@ -17,17 +17,22 @@ function wrong(btn) {
 }
 
 function checkPassword() {
-    const correctPassword = "46291529072002";
+    // const correctPassword = "46291529072002";
+    const correctPassword = "46";
     const input = document.getElementById("phonePassword").value.trim();
     const msg = document.getElementById("passMsg");
+    const gif = document.getElementById("mainGif");
 
     if (input === correctPassword) {
         msg.innerText = "Unlocked 💖 You know me too well 😘";
+        gif.src = "pix/firstpagegif.gif"; 
         setTimeout(correct, 800);
     } else {
         msg.innerText = "Hmm… that’s not it 😅 Try again, love ❤️";
+        gif.src = "pix/shootcat.gif"; 
     }
 }
+
 const heartsContainer = document.getElementById("hearts-container");
 
 function createHeart() {
@@ -58,3 +63,63 @@ function createHeart() {
 
 // Create hearts continuously
 setInterval(createHeart, 300);
+
+function showEmoji(type) {
+    const emojiBox = document.getElementById("emoji-feedback");
+
+    emojiBox.innerHTML = type === "correct" ? "💖💖💖" : "😭";
+    emojiBox.style.display = "block";
+
+    setTimeout(() => {
+        emojiBox.style.display = "none";
+    }, 1200);
+}
+function checkMessage(answer) {
+    const msg = document.querySelector("#quiz-message .quiz-msg");
+
+    if (answer === "paul") {
+        showEmoji("correct");
+        document.getElementById("quiz-message").style.display = "none";
+        document.getElementById("messageContent").style.display = "block";
+    } else {
+        showEmoji("wrong");
+        msg.innerHTML = "Try again 😅";
+    }
+}
+function checkProposal(answer) {
+    const msg = document.querySelector("#quiz-propose .quiz-msg");
+
+    if (answer === "me") {
+        showEmoji("correct");
+        document.getElementById("quiz-propose").style.display = "none";
+        document.getElementById("proposalContent").style.display = "block";
+    } else {
+        showEmoji("wrong");
+        msg.innerHTML = "Nope 😭 love knows";
+    }
+}
+function checkMeetDate(answer) {
+    const msg = document.querySelector("#quiz-meet .quiz-msg");
+
+    if (answer === "11-12-2022") {
+        showEmoji("correct");
+        document.getElementById("quiz-meet").style.display = "none";
+        document.getElementById("meetContent").style.display = "block";
+    } else {
+        showEmoji("wrong");
+        msg.innerHTML = "Almost 😭";
+    }
+}
+
+function checkTrip(answer) {
+    const msg = document.querySelector("#quiz-trip .quiz-msg");
+
+    if (answer === "kodaikanal") {
+        showEmoji("correct");
+        document.getElementById("quiz-trip").style.display = "none";
+        document.getElementById("tripContent").style.display = "block";
+    } else {
+        showEmoji("wrong");
+        msg.innerHTML = "Try again 😭";
+    }
+}
