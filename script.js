@@ -238,4 +238,130 @@ function nextPage4() {
         pages[current].classList.add("active");
     }
 }
+function unlock(btn, isCorrect) {
+    if (!isCorrect) {
+        btn.innerText = "❌ Try again";
+        return;
+    }
+
+    const card = btn.closest(".quiz-card");
+    card.querySelector(".quiz").style.display = "none";
+    card.querySelector(".hidden-photo").style.display = "block";
+}
+
+
+function loadQuestion(card) {
+    const step = Number(card.dataset.step);
+    const quiz = quizzes[step];
+
+    card.querySelector(".question").innerText = quiz.q;
+    const buttons = card.querySelectorAll("button");
+
+    buttons[0].innerText = quiz.options[0];
+    buttons[1].innerText = quiz.options[1];
+
+    buttons[0].setAttribute("onclick", `answer(this, ${quiz.correct === 0})`);
+    buttons[1].setAttribute("onclick", `answer(this, ${quiz.correct === 1})`);
+
+    card.querySelector(".progress").innerText =
+        `Question ${step + 1} / ${quizzes.length}`;
+}
+
+function answer(btn, isCorrect) {
+    const card = btn.closest(".quiz-card");
+
+    if (!isCorrect) {
+        card.dataset.step = 0;
+        loadQuestion(card);
+        alert("❌ Oops! Start again from Question 1 💔");
+        return;
+    }
+
+    let step = Number(card.dataset.step) + 1;
+    card.dataset.step = step;
+
+    if (step === quizzes.length) {
+        card.querySelector(".quiz").style.display = "none";
+        card.querySelector(".hidden-photo").style.display = "block";
+    } else {
+        loadQuestion(card);
+    }
+}
+const quizzes = [
+  {
+    q: "Where did we first meet? 💑",
+    options: ["College", "ATM"],
+    answer: 0
+  },
+  {
+    q: "Who will get more Angry? 😘",
+    options: ["Me 😎", "You 💖"],
+    answer: 1
+  },
+  {
+    q: "Our favorite date plan? 🌙",
+    options: ["Long drive", "Movie night"],
+    answer: 0
+  },
+  {
+    q: "What do I love most about you? 💕",
+    options: ["Your smile", "Your care"],
+    answer: 1
+  },
+  {
+    q: "what is the first dress colour that i bought for u🍕",
+    options: ["yellow", "ornage"],
+    answer: 0
+  },
+  {
+    q: "Your first non veg food with me  😅",
+    options: ["Fish", "chicken"],
+    answer: 1
+  },
+  {
+    q: "Our dream trip? ✈️",
+    options: ["swizerland", "Goa"],
+    answer: 0
+  },
+  {
+    q: "Forever means? ❤️",
+    options: ["Us together", "Just love"],
+    answer: 0
+  },
+  {
+    q: "Who loves more? 💞",
+    options: ["Me", "Both 😘"],
+    answer: 1
+  }
+];
+
+let currentQuiz = 0;
+
+function startQuiz(card) {
+  if (card.classList.contains("unlocked")) return;
+
+  const quiz = quizzes[currentQuiz];
+  const question = card.querySelector(".question");
+  const buttons = card.querySelectorAll(".options button");
+  const front = card.querySelector(".card-front");
+  const img = card.querySelector(".hidden-photo");
+
+  front.style.display = "none";
+  question.textContent = quiz.q;
+
+  buttons.forEach((btn, i) => {
+    btn.textContent = quiz.options[i];
+    btn.onclick = () => {
+      if (i === quiz.answer) {
+        card.classList.add("unlocked");
+        img.style.display = "block";
+        card.querySelector(".quiz").style.display = "none";
+        currentQuiz++;
+      } else {
+        btn.textContent = "Try again 😅";
+      }
+    };
+  });
+}
+
 
