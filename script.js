@@ -123,3 +123,65 @@ function checkTrip(answer) {
         msg.innerHTML = "Try again 😭";
     }
 }
+
+function nextPage() {
+    pages[current].classList.remove("active");
+    current++;
+
+    if (current < pages.length) {
+        pages[current].classList.add("active");
+
+        // 👉 START GAME ONLY ON PAGE 3 (index 2)
+        if (current === 2) {
+            startGame();
+        }
+    }
+}
+let score = 0;
+let gameInterval;
+
+function startGame() {
+    gameInterval = setInterval(dropItem, 900);
+}
+
+function dropItem() {
+    const item = document.createElement("div");
+    item.classList.add("falling");
+
+    // 70% heart, 30% crying
+    const isHeart = Math.random() > 0.3;
+    item.textContent = isHeart ? "💖" : "😭";
+
+    item.style.left = Math.random() * 90 + "%";
+
+    item.onclick = () => {
+        if (isHeart) {
+            score++;
+            document.getElementById("score").innerText = "Score: " + score;
+            item.remove();
+
+            if (score >= 3) {
+                winGame();
+            }
+        } else {
+            loseGame();
+        }
+    };
+
+    document.getElementById("gameArea").appendChild(item);
+
+    setTimeout(() => item.remove(), 3000);
+}
+
+function winGame() {
+    clearInterval(gameInterval);
+    document.getElementById("gameMsg").innerHTML =
+        "You caught my heart forever 💞";
+    document.getElementById("nextBtn").style.display = "block";
+}
+
+function loseGame() {
+    clearInterval(gameInterval);
+    document.getElementById("gameMsg").innerHTML =
+        "Oops 😭 Try again, my love!";
+}

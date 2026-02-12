@@ -150,13 +150,17 @@
 
 <!-- PAGE 3 -->
 <div class="page">
-    <h2>Another Question 💖</h2>
-    <p>What makes our love special?</p>
+    <h2>Catch the Love 💖</h2>
+    <p>Catch 3 hearts to prove our love 😘</p>
 
-    <button onclick="wrong(this)">Arguments 😅</button>
-    <button onclick="correct()">Everything 💑</button>
+    <div id="gameArea"></div>
 
-    <p class="msg"></p>
+    <p id="score">Score: 0</p>
+    <p id="gameMsg"></p>
+
+    <button id="nextBtn" onclick="nextPage()" style="display:none;">
+        Next 💕
+    </button>
 </div>
 
 <!-- FINAL PAGE -->
