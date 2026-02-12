@@ -124,7 +124,7 @@ function checkTrip(answer) {
     }
 }
 
-function nextPage() {
+function nextPage2() {
     pages[current].classList.remove("active");
     current++;
 
@@ -137,51 +137,105 @@ function nextPage() {
         }
     }
 }
+
+//game logic
 let score = 0;
 let gameInterval;
+//SCORE TO WIN CAN BE ADJUSTED FOR MORE FUN
+const WIN_SCORE = 1;
+
+const goodEmojis = ["💖", "💘", "💝", "💕", "😍"];
+const badEmojis = ["😭", "💔", "😈", "🥺", "😵", "💣"];
 
 function startGame() {
-    gameInterval = setInterval(dropItem, 900);
+    score = 0;
+    document.getElementById("score").innerText = "Score: 0";
+    document.getElementById("gameMsg").innerHTML = "";
+    document.getElementById("nextBtn").style.display = "none";
+
+    gameInterval = setInterval(dropItem, 700);
 }
 
 function dropItem() {
     const item = document.createElement("div");
     item.classList.add("falling");
 
-    // 70% heart, 30% crying
-    const isHeart = Math.random() > 0.3;
-    item.textContent = isHeart ? "💖" : "😭";
+    const isGood = Math.random() > 0.4;
+    const emoji = isGood
+        ? goodEmojis[Math.floor(Math.random() * goodEmojis.length)]
+        : badEmojis[Math.floor(Math.random() * badEmojis.length)];
 
+    item.textContent = emoji;
     item.style.left = Math.random() * 90 + "%";
 
     item.onclick = () => {
-        if (isHeart) {
+        if (goodEmojis.includes(emoji)) {
             score++;
             document.getElementById("score").innerText = "Score: " + score;
             item.remove();
 
-            if (score >= 3) {
+            if (score >= WIN_SCORE) {
                 winGame();
             }
+        } else if (emoji === "💣") {
+            score = Math.max(0, score - 1);
+            document.getElementById("score").innerText = "Score: " + score;
+            item.remove();
         } else {
             loseGame();
         }
     };
 
     document.getElementById("gameArea").appendChild(item);
-
-    setTimeout(() => item.remove(), 3000);
+    setTimeout(() => item.remove(), 2500);
 }
 
 function winGame() {
     clearInterval(gameInterval);
     document.getElementById("gameMsg").innerHTML =
-        "You caught my heart forever 💞";
-    document.getElementById("nextBtn").style.display = "block";
+        "You proved your love 💞 Scored 10 points! 🥰";
+
+    setTimeout(() => {
+        pages[current].classList.remove("active");
+        current++;
+        pages[current].classList.add("active");
+
+        // show Next button after 10 seconds
+        setTimeout(() => {
+            document.getElementById("nextBtnVideo").style.display = "block";
+        }, 5000);
+
+    }, 1200);
 }
+
 
 function loseGame() {
     clearInterval(gameInterval);
     document.getElementById("gameMsg").innerHTML =
-        "Oops 😭 Try again, my love!";
+        "Oops 💔 Love needs patience 😅 Try again ❤️";
 }
+// function nextPage3() {
+//     document.querySelector(".page").style.display = "none";
+
+// }
+
+
+// function showVideoPage() {
+//     document.querySelector(".page").style.display = "none";
+
+//     const videoPage = document.getElementById("videoPage");
+//     videoPage.style.display = "block";
+
+//     setTimeout(() => {
+//         document.getElementById("nextBtnVideo").style.display = "block";
+//     }, 10000); 
+// }
+function nextPage4() {
+    pages[current].classList.remove("active");
+    current++;
+
+    if (current < pages.length) {
+        pages[current].classList.add("active");
+    }
+}
+

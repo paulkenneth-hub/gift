@@ -341,3 +341,22 @@ button:hover {
     margin-top: 10px;
 }
 
+.falling {
+    position: absolute;
+    top: 0;
+    font-size: 32px;
+    cursor: pointer;
+    animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+    from { top: 0; }
+    to { top: 100%; }
+}
+#loveVideo {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 16px;
+    margin: 20px auto;
+    display: block;
+}

@@ -142,7 +142,7 @@
 
         </div>
 
-        <button onclick="nextPage()">Next 💕</button>
+        <button onclick="nextPage2()">Next 💕</button>
 
     </div>
 </div>
@@ -151,17 +151,34 @@
 <!-- PAGE 3 -->
 <div class="page">
     <h2>Catch the Love 💖</h2>
-    <p>Catch 3 hearts to prove our love 😘</p>
+    <p>Catch 10 hearts to prove our love 😘</p>
 
     <div id="gameArea"></div>
 
     <p id="score">Score: 0</p>
     <p id="gameMsg"></p>
 
-    <button id="nextBtn" onclick="nextPage()" style="display:none;">
+    <button id="nextBtn" onclick="nextPage3()" style="display:none;">
         Next 💕
     </button>
 </div>
+
+<!-- PAGE 4 -->
+<div class="page" id="videoPage">
+    <h2>Different Professions, Same Love 💞</h2>
+
+    <video id="loveVideo" autoplay muted playsinline>
+        <source src="pix/video.mp4" type="video/mp4">
+    </video>
+
+    <p>👨‍💻 Software Engineer ❤️ 🧑‍⚕️ Nursing Officer</p>
+
+    <button id="nextBtnVideo" onclick="nextPage4()" style="display:none;">
+        Next 💕
+    </button>
+</div>
+
+
 
 <!-- FINAL PAGE -->
 <div class="page">
