@@ -364,4 +364,13 @@ function startQuiz(card) {
   });
 }
 
+function nextPage5() {
+    // hide current active page
+    document.querySelector(".page.active").classList.remove("active");
+
+    // show final page
+    document.getElementById("finalPage").classList.add("active");
+}
+
+
 
