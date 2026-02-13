@@ -231,14 +231,15 @@ function loseGame() {
 // }
 
 function nextPage4() {
- 
-    pages[current].classList.remove("active");
-    current++;
+  pages[current].classList.remove("active");
+  current++;
 
-    if (current < pages.length) {
-        pages[current].classList.add("active");
-    }
+  if (current < pages.length) {
+    pages[current].classList.add("active");
+  }
 }
+
+
 function unlock(btn, isCorrect) {
     if (!isCorrect) {
         btn.innerText = "❌ Try again";
@@ -339,21 +340,27 @@ const quizzes = [
 const photoPage = document.getElementById("photoPage");
 const song = document.getElementById("photoSong");
 
-function playPhotoSong() {
-  if (!song) return;
-  song.currentTime = 0;
+let songStarted = false; // 🔒 guard
+
+function playPhotoSongOnce() {
+  if (!song || songStarted) return;
+  songStarted = true;
   song.play().catch(() => {});
 }
 
 function stopPhotoSong() {
-  if (song) song.pause();
+  if (!song) return;
+  song.pause();
+  song.currentTime = 0;
+  songStarted = false;
 }
 
+// Observe page activation
 const observer = new MutationObserver(() => {
   if (photoPage.classList.contains("active")) {
-    playPhotoSong();   // ❤️ entered photo page
+    playPhotoSongOnce();   // ▶️ play ONCE
   } else {
-    stopPhotoSong();   // left page
+    stopPhotoSong();       // 🔇 stop when leaving
   }
 });
 
@@ -365,17 +372,7 @@ observer.observe(photoPage, {
 let currentQuiz = 0;
 
 function startQuiz(card) {
-          document.querySelectorAll(".page").forEach(p => p.style.display = "none");
 
-  // show photo page
-  document.getElementById("photoPage").style.display = "block";
-
-  // play song 🎶
-  const song = document.getElementById("photoSong");
-  song.currentTime = 0;
-  song.play().catch(() => {
-    console.log("Autoplay blocked, user interaction needed");
-  });
   if (card.classList.contains("unlocked")) return;
 
   const quiz = quizzes[currentQuiz];
@@ -403,13 +400,10 @@ function startQuiz(card) {
 }
 
 function nextPage5() {
-  
-    // hide current active page
-    document.querySelector(".page.active").classList.remove("active");
-
-    // show final page
-    document.getElementById("finalPage").classList.add("active");
+  document.querySelector(".page.active").classList.remove("active");
+  document.getElementById("finalPage").classList.add("active");
 }
+
 
 function openLetter() {
   document.querySelector(".envelope").classList.toggle("open");
