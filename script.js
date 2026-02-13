@@ -229,6 +229,7 @@ function loseGame() {
 //         document.getElementById("nextBtnVideo").style.display = "block";
 //     }, 10000); 
 // }
+
 function nextPage4() {
  
     pages[current].classList.remove("active");
@@ -334,6 +335,32 @@ const quizzes = [
     answer: 1
   }
 ];
+
+const photoPage = document.getElementById("photoPage");
+const song = document.getElementById("photoSong");
+
+function playPhotoSong() {
+  if (!song) return;
+  song.currentTime = 0;
+  song.play().catch(() => {});
+}
+
+function stopPhotoSong() {
+  if (song) song.pause();
+}
+
+const observer = new MutationObserver(() => {
+  if (photoPage.classList.contains("active")) {
+    playPhotoSong();   // ❤️ entered photo page
+  } else {
+    stopPhotoSong();   // left page
+  }
+});
+
+observer.observe(photoPage, {
+  attributes: true,
+  attributeFilter: ["class"]
+});
 
 let currentQuiz = 0;
 
