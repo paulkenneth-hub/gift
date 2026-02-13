@@ -293,7 +293,7 @@ const quizzes = [
   {
     q: "Where did we first meet? 💑",
     options: ["College", "ATM"],
-    answer: 0
+    answer: 1
   },
   {
     q: "Who will get more Angry? 😘",
