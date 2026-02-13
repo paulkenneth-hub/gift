@@ -17,8 +17,7 @@ function wrong(btn) {
 }
 
 function checkPassword() {
-    // const correctPassword = "46291529072002";
-    const correctPassword = "46";
+    const correctPassword = "46291529072002";
     const input = document.getElementById("phonePassword").value.trim();
     const msg = document.getElementById("passMsg");
     const gif = document.getElementById("mainGif");
@@ -142,7 +141,7 @@ function nextPage2() {
 let score = 0;
 let gameInterval;
 //SCORE TO WIN CAN BE ADJUSTED FOR MORE FUN
-const WIN_SCORE = 1;
+const WIN_SCORE = 10;
 
 const goodEmojis = ["💖", "💘", "💝", "💕", "😍"];
 const badEmojis = ["😭", "💔", "😈", "🥺", "😵", "💣"];
@@ -372,5 +371,7 @@ function nextPage5() {
     document.getElementById("finalPage").classList.add("active");
 }
 
-
+function openLetter() {
+  document.querySelector(".envelope").classList.toggle("open");
+}
 
