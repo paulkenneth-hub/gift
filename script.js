@@ -141,7 +141,7 @@ function nextPage2() {
 let score = 0;
 let gameInterval;
 //SCORE TO WIN CAN BE ADJUSTED FOR MORE FUN
-const WIN_SCORE = 10;
+const WIN_SCORE = 5;
 
 const goodEmojis = ["💖", "💘", "💝", "💕", "😍"];
 const badEmojis = ["😭", "💔", "😈", "🥺", "😵", "💣"];
