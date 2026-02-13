@@ -192,7 +192,7 @@ function dropItem() {
 function winGame() {
     clearInterval(gameInterval);
     document.getElementById("gameMsg").innerHTML =
-        "You proved your love 💞 Scored 10 points! 🥰";
+        "You proved your love 💞 Scored 5 points! 🥰";
 
     setTimeout(() => {
         pages[current].classList.remove("active");
@@ -230,6 +230,7 @@ function loseGame() {
 //     }, 10000); 
 // }
 function nextPage4() {
+ 
     pages[current].classList.remove("active");
     current++;
 
@@ -337,6 +338,17 @@ const quizzes = [
 let currentQuiz = 0;
 
 function startQuiz(card) {
+          document.querySelectorAll(".page").forEach(p => p.style.display = "none");
+
+  // show photo page
+  document.getElementById("photoPage").style.display = "block";
+
+  // play song 🎶
+  const song = document.getElementById("photoSong");
+  song.currentTime = 0;
+  song.play().catch(() => {
+    console.log("Autoplay blocked, user interaction needed");
+  });
   if (card.classList.contains("unlocked")) return;
 
   const quiz = quizzes[currentQuiz];
@@ -364,6 +376,7 @@ function startQuiz(card) {
 }
 
 function nextPage5() {
+  
     // hide current active page
     document.querySelector(".page.active").classList.remove("active");
 
